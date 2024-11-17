@@ -8,8 +8,8 @@ from .logger import app_logger
 
 class PerformanceMonitor:
     """
-    Клас за мониторинг на производителността на операциите.
-    Следи време за изпълнение, използвана памет и CPU натоварване.
+    Operations performance monitoring class.
+    Next is execution time, memory used and CPU load.
     """
 
     def __init__(self):
@@ -18,35 +18,35 @@ class PerformanceMonitor:
 
     def measure_performance(self, operation_name):
         """
-        Декоратор за измерване на производителността на функция.
+        A decorator to measure the performance of a function.
 
-        Пример на използване:
+        Usage example:
         @performance_monitor.measure_performance("read_csv")
         def read_csv_file(filename):
-            # код тук
+            # code here
         """
 
         def decorator(func):
             @wraps(func)
             def wrapper(*args, **kwargs):
-                # Начално състояние
+                # Initial state
                 start_time = time.time()
                 start_memory = self.process.memory_info().rss / 1024 / 1024  # MB
 
                 try:
-                    # Изпълнение на функцията
+                    # Execution of the function
                     result = func(*args, **kwargs)
 
-                    # Крайно състояние
+                    # Final condition
                     end_time = time.time()
                     end_memory = self.process.memory_info().rss / 1024 / 1024
                     cpu_percent = self.process.cpu_percent()
 
-                    # Изчисляване на метрики
+                    # Calculating metrics
                     execution_time = end_time - start_time
                     memory_used = end_memory - start_memory
 
-                    # Записване на метриките
+                    # Recording the metrics
                     metric = {
                         'timestamp': pd.Timestamp.now(),
                         'operation': operation_name,
@@ -62,7 +62,7 @@ class PerformanceMonitor:
                     return result
 
                 except Exception as e:
-                    # Записване на метрики при грешка
+                    # Logging metrics on error
                     end_time = time.time()
                     metric = {
                         'timestamp': pd.Timestamp.now(),
@@ -80,41 +80,41 @@ class PerformanceMonitor:
         return decorator
 
     def _log_metric(self, metric):
-        """Записва метриките във файл и лог"""
-        # Форматиране на съобщението за лог
+        """Saves metrics to file and log"""
+        # Format the log message
         if metric['status'] == 'success':
             message = (
-                f"Операция: {metric['operation']} | "
-                f"Време: {metric['execution_time']}s | "
-                f"Памет: {metric['memory_used_mb']}MB | "
+                f"Operation: {metric['operation']} | "
+                f"Time: {metric['execution_time']}s | "
+                f"Memory: {metric['memory_used_mb']}MB | "
                 f"CPU: {metric['cpu_percent']}%"
             )
         else:
             message = (
-                f"Операция: {metric['operation']} | "
-                f"Време: {metric['execution_time']}s | "
-                f"Статус: ГРЕШКА | "
-                f"Съобщение: {metric['error_message']}"
+                f"Operation: {metric['operation']} | "
+                f"Time: {metric['execution_time']}s | "
+                f"Status: ERROR | "
+                f"Message: {metric['error_message']}"
             )
 
         app_logger.info(message)
 
-        # Запис във файл
+        # Save to file
         df = pd.DataFrame([metric])
         df.to_csv(PERFORMANCE_LOG_FILE, mode='a', header=not PERFORMANCE_LOG_FILE.exists(), index=False)
 
     def generate_performance_report(self):
         """
-        Генерира отчет за производителността на базата на събраните метрики.
+        Generates a performance report based on the metrics collected.
         """
         if not self.metrics:
-            return "Няма налични метрики за производителност"
+            return "No performance metrics available"
 
         df = pd.DataFrame(self.metrics)
 
-        report = "=== Отчет за производителност ===\n\n"
+        report = "=== Performance report ===\n\n"
 
-        # Обобщение по операции
+        # Summary of operations
         summary = df[df['status'] == 'success'].groupby('operation').agg({
             'execution_time': ['count', 'mean', 'min', 'max'],
             'memory_used_mb': 'mean',
