@@ -123,8 +123,8 @@ class PerformanceMonitor:
 
         for operation in summary.index:
             stats = summary.loc[operation]
-            report += f"Операция: {operation}\n"
-            report += f"  Брой изпълнения: {stats['execution_time']['count']}\n"
+            report += f"Operation: {operation}\n"
+            report += f"  Number of performances: {stats['execution_time']['count']}\n"
             report += f"  Средно време: {stats['execution_time']['mean']:.3f}s\n"
             report += f"  Мин/Макс време: {stats['execution_time']['min']:.3f}s / {stats['execution_time']['max']:.3f}s\n"
             report += f"  Средна използвана памет: {stats['memory_used_mb']['mean']:.2f}MB\n"
