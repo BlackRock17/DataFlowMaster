@@ -127,8 +127,8 @@ class PerformanceMonitor:
             report += f"  Number of performances: {stats['execution_time']['count']}\n"
             report += f"  Average time: {stats['execution_time']['mean']:.3f}s\n"
             report += f"  Min/Max time: {stats['execution_time']['min']:.3f}s / {stats['execution_time']['max']:.3f}s\n"
-            report += f"  Средна използвана памет: {stats['memory_used_mb']['mean']:.2f}MB\n"
-            report += f"  Средно CPU натоварване: {stats['cpu_percent']['mean']:.2f}%\n\n"
+            report += f"  Average memory used: {stats['memory_used_mb']['mean']:.2f}MB\n"
+            report += f"  Average CPU load: {stats['cpu_percent']['mean']:.2f}%\n\n"
 
         # Грешки
         errors = df[df['status'] == 'error']
