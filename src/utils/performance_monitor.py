@@ -125,8 +125,8 @@ class PerformanceMonitor:
             stats = summary.loc[operation]
             report += f"Operation: {operation}\n"
             report += f"  Number of performances: {stats['execution_time']['count']}\n"
-            report += f"  Средно време: {stats['execution_time']['mean']:.3f}s\n"
-            report += f"  Мин/Макс време: {stats['execution_time']['min']:.3f}s / {stats['execution_time']['max']:.3f}s\n"
+            report += f"  Average time: {stats['execution_time']['mean']:.3f}s\n"
+            report += f"  Min/Max time: {stats['execution_time']['min']:.3f}s / {stats['execution_time']['max']:.3f}s\n"
             report += f"  Средна използвана памет: {stats['memory_used_mb']['mean']:.2f}MB\n"
             report += f"  Средно CPU натоварване: {stats['cpu_percent']['mean']:.2f}%\n\n"
 
