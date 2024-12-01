@@ -133,7 +133,7 @@ class PerformanceMonitor:
         # Errors
         errors = df[df['status'] == 'error']
         if not errors.empty:
-            report += "=== Грешки ===\n"
+            report += "=== Errors ===\n"
             for _, error in errors.iterrows():
                 report += f"Операция: {error['operation']}\n"
                 report += f"Време: {error['timestamp']}\n"
