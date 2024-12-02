@@ -135,7 +135,7 @@ class PerformanceMonitor:
         if not errors.empty:
             report += "=== Errors ===\n"
             for _, error in errors.iterrows():
-                report += f"Операция: {error['operation']}\n"
+                report += f"Operation: {error['operation']}\n"
                 report += f"Време: {error['timestamp']}\n"
                 report += f"Съобщение: {error['error_message']}\n\n"
 
