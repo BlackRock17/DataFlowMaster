@@ -142,5 +142,5 @@ class PerformanceMonitor:
         return report
 
 
-# Създаваме глобална инстанция
+# We create a global instance
 performance_monitor = PerformanceMonitor()
