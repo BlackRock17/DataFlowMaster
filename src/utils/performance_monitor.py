@@ -136,8 +136,8 @@ class PerformanceMonitor:
             report += "=== Errors ===\n"
             for _, error in errors.iterrows():
                 report += f"Operation: {error['operation']}\n"
-                report += f"Време: {error['timestamp']}\n"
-                report += f"Съобщение: {error['error_message']}\n\n"
+                report += f"Time: {error['timestamp']}\n"
+                report += f"Message: {error['error_message']}\n\n"
 
         return report
 
