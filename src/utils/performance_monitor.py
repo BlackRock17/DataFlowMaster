@@ -142,5 +142,6 @@ class PerformanceMonitor:
         return report
 
 
-# We create a global instance
+"""We create a global instance"""
+
 performance_monitor = PerformanceMonitor()
