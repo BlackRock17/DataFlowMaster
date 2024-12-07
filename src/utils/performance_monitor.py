@@ -130,7 +130,7 @@ class PerformanceMonitor:
             report += f"  Average memory used: {stats['memory_used_mb']['mean']:.2f}MB\n"
             report += f"  Average CPU load: {stats['cpu_percent']['mean']:.2f}%\n\n"
 
-        # Errors
+        """Errors"""
         errors = df[df['status'] == 'error']
         if not errors.empty:
             report += "=== Errors ===\n"
