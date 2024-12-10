@@ -114,7 +114,7 @@ class PerformanceMonitor:
 
         report = "=== Performance report ===\n\n"
 
-        # Summary of operations
+        """Summary of operations"""
         summary = df[df['status'] == 'success'].groupby('operation').agg({
             'execution_time': ['count', 'mean', 'min', 'max'],
             'memory_used_mb': 'mean',
