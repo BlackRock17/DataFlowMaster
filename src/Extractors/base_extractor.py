@@ -12,3 +12,7 @@ class BaseExtractor(ABC):
 
     def __init__(self):
         self.logger = app_logger
+
+    @abstractmethod
+    def validate_source(self, source_path: str) -> bool:
+        pass
