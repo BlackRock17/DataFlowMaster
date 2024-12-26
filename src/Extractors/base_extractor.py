@@ -15,4 +15,13 @@ class BaseExtractor(ABC):
 
     @abstractmethod
     def validate_source(self, source_path: str) -> bool:
+        """
+                Проверява дали източникът на данни е валиден.
+
+                Args:
+                    source_path (str): Път до източника на данни
+
+                Returns:
+                    bool: True ако източникът е валиден, False в противен случай
+                """
         pass
