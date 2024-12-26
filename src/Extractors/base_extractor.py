@@ -9,3 +9,6 @@ class BaseExtractor(ABC):
     Базов клас за всички extractors.
     Дефинира общия интерфейс и функционалност за извличане на данни.
     """
+
+    def __init__(self):
+        self.logger = app_logger
