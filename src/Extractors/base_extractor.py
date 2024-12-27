@@ -28,4 +28,14 @@ class BaseExtractor(ABC):
 
     @abstractmethod
     def read_data(self, source_path: str, **kwargs) -> pd.DataFrame:
+        """
+            Чете данните от източника.
+
+            Args:
+                source_path (str): Път до източника на данни
+                **kwargs: Допълнителни параметри за четене
+
+            Returns:
+                pd.DataFrame: Прочетените данни като pandas DataFrame
+        """
         pass
