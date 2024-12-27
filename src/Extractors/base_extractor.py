@@ -25,3 +25,7 @@ class BaseExtractor(ABC):
                     bool: True ако източникът е валиден, False в противен случай
                 """
         pass
+
+    @abstractmethod
+    def read_data(self, source_path: str, **kwargs) -> pd.DataFrame:
+        pass
