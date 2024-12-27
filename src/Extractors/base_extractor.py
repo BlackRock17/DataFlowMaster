@@ -39,3 +39,6 @@ class BaseExtractor(ABC):
                 pd.DataFrame: Прочетените данни като pandas DataFrame
         """
         pass
+
+    def extract(self, source_path: str, **kwargs) -> pd.DataFrame:
+        pass
