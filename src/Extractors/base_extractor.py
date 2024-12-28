@@ -41,4 +41,14 @@ class BaseExtractor(ABC):
         pass
 
     def extract(self, source_path: str, **kwargs) -> pd.DataFrame:
-        pass
+        """
+            Основен метод за извличане на данни.
+            Включва валидация, логване и мониторинг на производителността.
+
+            Args:
+                source_path (str): Път до източника на данни
+                **kwargs: Допълнителни параметри за четене
+
+            Returns:
+                pd.DataFrame: Извлечените данни
+        """
