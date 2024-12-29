@@ -52,3 +52,6 @@ class BaseExtractor(ABC):
             Returns:
                 pd.DataFrame: Извлечените данни
         """
+
+        source_path = str(Path(source_path))
+        self.logger.info(f"Започва извличане на данни от: {source_path}")
